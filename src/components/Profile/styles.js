@@ -4,13 +4,11 @@ import {
   
   const styles: any = StyleSheet.create({
     container: {
-      backgroundColor: "#bcbec1",
-      alignItems: "center",
-      justifyContent: "center",
+      // backgroundColor: "#bcbec1",
+       alignItems: "center",
+      // justifyContent: "center",
       width: 80,
       height: 80,
-      borderRadius: 40,
-      alignSelf: "center",
       marginBottom: 20
     },
     btn: {
@@ -25,5 +23,12 @@ import {
       fontSize: 16,
   
     },
+    header: {
+      height:50,
+      backgroundColor: "#263238",
+      borderBottomColor: "white",
+      borderBottomWidth: 5,
+      marginBottom: 2
+  },
   });
   export default styles;

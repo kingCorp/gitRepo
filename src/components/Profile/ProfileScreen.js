@@ -1,7 +1,16 @@
 // @flow
 import React, { Component } from "react";
-import { Text, View, Alert } from "react-native";
-import { Container, Card, Button, Body, CardItem, Left, Right } from "native-base";
+import { Text, View, Image } from "react-native";
+import {
+  Container,
+  Card,
+  Header,
+  Body,
+  CardItem,
+  Left,
+  Right,
+  Title
+} from "native-base";
 import styles from "./styles";
 
 type Props = {};
@@ -11,31 +20,53 @@ export default class Profile extends Component<Props, State> {
     this.state = {};
   }
 
-  componentDidMount() {
-      console.log(this.props)
-  }
-
   render() {
-      const {info} = this.props.navigation.state.params
+    const { info } = this.props.navigation.state.params;
     return (
       <Container>
+        <Header style={styles.header}>
+          <Body style={{ marginLeft: 10 }}>
+            <Title>{info.name}</Title>
+          </Body>
+        </Header>
         <View style={{ padding: 10 }}>
-          <Card >
+          <Card>
             <CardItem header>
             <Left />
               <Body>
-                <Text>{info.name}</Text>
-                <Text>height: {info.height}</Text>
-                <Text>skin color: {info.skin_color}</Text>
+              <Image
+                          style={{ width: 100, height: 100 }}
+                          source={{
+                            uri:
+                              info.owner.avatar_url
+                          }}
+                        />
               </Body>
               <Right />
             </CardItem>
             <CardItem>
-              <Body>
-                <View style={styles.container}>
-                  <Text style={{ color: "white", fontSize: 28 }}>JD</Text>
-                </View>
-              </Body>
+              <Left>
+                <Text>Name: </Text>
+              </Left>
+              <Right>
+                <Text>{info.full_name}</Text>
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Text>Github profile: </Text>
+              </Left>
+              <Right>
+                <Text>{info.owner.html_url}</Text>
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Text>my repositories: </Text>
+              </Left>
+              <Right>
+                <Text>{info.owner.repos_url}</Text>
+              </Right>
             </CardItem>
           </Card>
         </View>
